@@ -29,6 +29,7 @@ public class userPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -121,6 +122,12 @@ public class userPanel extends javax.swing.JPanel {
             if (rs.next()){
                 JOptionPane.showMessageDialog(null, "Login successful!");
                 this.setVisible(false);
+                
+                com.main.Admin admin = new com.main.Admin();
+                admin.setVisible(false);
+                
+                com.main.Main Main = new com.main.Main();
+                Main.setVisible(true);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
