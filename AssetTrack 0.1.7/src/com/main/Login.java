@@ -26,8 +26,9 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        leftPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        backGradient = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("mainFrame"); // NOI18N
@@ -36,29 +37,51 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(400, 500));
+        leftPanel.setBackground(new java.awt.Color(255, 255, 255));
+        leftPanel.setPreferredSize(new java.awt.Dimension(550, 700));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setFocusable(false);
+        jPanel1.setMaximumSize(new java.awt.Dimension(100, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(125, 125));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 125, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, -1, -1));
+        javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
+        leftPanel.setLayout(leftPanelLayout);
+        leftPanelLayout.setHorizontalGroup(
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                .addContainerGap(200, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(225, 225, 225))
+        );
+        leftPanelLayout.setVerticalGroup(
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(512, Short.MAX_VALUE))
+        );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/login/gradientbg/gradient.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setMaximumSize(new java.awt.Dimension(1100, 700));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1100, 700));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1100, 700));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1641, 1200));
-        jLabel1.getAccessibleContext().setAccessibleName("gradientBG");
+        getContentPane().add(leftPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        backGradient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/login/gradientbg/gradient.png"))); // NOI18N
+        backGradient.setText("jLabel1");
+        backGradient.setMaximumSize(new java.awt.Dimension(1100, 700));
+        backGradient.setMinimumSize(new java.awt.Dimension(1100, 700));
+        backGradient.setPreferredSize(new java.awt.Dimension(1100, 700));
+        getContentPane().add(backGradient, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, -190, 1641, 1200));
+        backGradient.getAccessibleContext().setAccessibleName("gradientBG");
 
         pack();
         setLocationRelativeTo(null);
@@ -100,7 +123,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel backGradient;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel leftPanel;
     // End of variables declaration//GEN-END:variables
 }
