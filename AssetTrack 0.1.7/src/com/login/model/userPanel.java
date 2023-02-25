@@ -4,6 +4,18 @@
  */
 package com.login.model;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Setsuna
@@ -29,26 +41,31 @@ public class userPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         u_namefield = new javax.swing.JTextField();
         u_passfield = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/login/logoandimages/logo 125x125.png"))); // NOI18N
 
-        u_namefield.setText("jTextField1");
+        u_namefield.setText("Username");
         u_namefield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 u_namefieldActionPerformed(evt);
             }
         });
 
-        u_passfield.setText("jPasswordField1");
+        u_passfield.setText("Password");
 
-        jButton1.setText("LOGIN");
+        loginButton.setText("LOGIN");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("REGISTER");
+        registerButton.setText("REGISTER");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -67,8 +84,8 @@ public class userPanel extends javax.swing.JPanel {
                         .addGap(100, 100, 100))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(150, 150, 150))))
         );
         layout.setVerticalGroup(
@@ -81,9 +98,9 @@ public class userPanel extends javax.swing.JPanel {
                 .addGap(48, 48, 48)
                 .addComponent(u_passfield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
-                .addComponent(jButton1)
+                .addComponent(loginButton)
                 .addGap(35, 35, 35)
-                .addComponent(jButton2)
+                .addComponent(registerButton)
                 .addContainerGap(126, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -92,11 +109,34 @@ public class userPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_u_namefieldActionPerformed
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        String getUsername = u_namefield.getText();
+        String getPassword = u_passfield.getText();
+        
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/loginpage", "root", "");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `login_information` WHERE `usernameField` = '"+getUsername+"' AND `passwordField`= '"+getPassword+"'");
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()){
+                JOptionPane.showMessageDialog(null, "Login successful!");
+                this.setVisible(false);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
+            }
+        }
+        
+        catch(SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JButton registerButton;
     private javax.swing.JTextField u_namefield;
     private javax.swing.JPasswordField u_passfield;
     // End of variables declaration//GEN-END:variables
