@@ -18,6 +18,8 @@ import java.sql.SQLException;
 import java.awt.Color;
 
 public class userPanel extends javax.swing.JPanel {
+    
+RoundedTextField textField = new RoundedTextField();
 
     public userPanel() {
         initComponents();
@@ -27,7 +29,7 @@ public class userPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        logoImage = new javax.swing.JLabel();
         u_namefield = new javax.swing.JTextField();
         u_passfield = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
@@ -35,8 +37,8 @@ public class userPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(102, 102, 255));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icon/rsz_1logo_transparent.png"))); // NOI18N
+        logoImage.setBackground(new java.awt.Color(255, 255, 255));
+        logoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icon/rsz_1logo_transparent.png"))); // NOI18N
 
         u_namefield.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         u_namefield.setText("Username");
@@ -88,7 +90,7 @@ public class userPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(186, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoImage, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(184, 184, 184))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +112,7 @@ public class userPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(88, 88, 88)
-                .addComponent(jLabel1)
+                .addComponent(logoImage)
                 .addGap(18, 18, 18)
                 .addComponent(u_namefield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
@@ -190,8 +192,8 @@ public class userPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
+    private javax.swing.JLabel logoImage;
     private javax.swing.JLabel registerNewMem;
     private javax.swing.JTextField u_namefield;
     private javax.swing.JPasswordField u_passfield;
