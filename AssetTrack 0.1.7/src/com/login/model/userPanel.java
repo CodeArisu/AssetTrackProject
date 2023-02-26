@@ -44,7 +44,7 @@ RoundedTextField textField = new RoundedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(102, 102, 255));
+        setBackground(new java.awt.Color(51, 153, 255));
 
         logoImage.setBackground(new java.awt.Color(255, 255, 255));
         logoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icon/rsz_1logo_transparent.png"))); // NOI18N
@@ -87,14 +87,17 @@ RoundedTextField textField = new RoundedTextField();
         registerNewMem.setForeground(new java.awt.Color(255, 255, 255));
         registerNewMem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registerNewMem.setText("New to the Company? Register!");
+        registerNewMem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerNewMem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerNewMemMouseClicked(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel1.setText("Username");
 
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel2.setText("Password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
