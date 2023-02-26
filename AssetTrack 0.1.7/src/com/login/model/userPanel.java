@@ -12,7 +12,7 @@ import java.awt.Font;
 
 public class userPanel extends javax.swing.JPanel {
     
-RoundedTextField textField = new RoundedTextField();
+
 
     public userPanel() {
         initComponents();
@@ -37,33 +37,18 @@ RoundedTextField textField = new RoundedTextField();
     private void initComponents() {
 
         logoImage = new javax.swing.JLabel();
-        u_namefield = new javax.swing.JTextField();
         u_passfield = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         registerNewMem = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        userBGPanel = new RoundedPanel(100, new Color(255,255,255));
+        u_namefield = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(51, 153, 255));
 
         logoImage.setBackground(new java.awt.Color(255, 255, 255));
         logoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icon/rsz_1logo_transparent.png"))); // NOI18N
-
-        u_namefield.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        u_namefield.setText("Username");
-        u_namefield.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                u_namefieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                u_namefieldFocusLost(evt);
-            }
-        });
-        u_namefield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                u_namefieldActionPerformed(evt);
-            }
-        });
 
         u_passfield.setText("Password");
         u_passfield.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -100,12 +85,50 @@ RoundedTextField textField = new RoundedTextField();
         jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel2.setText("Password");
 
+        userBGPanel.setOpaque(false);
+
+        u_namefield.setOpaque(false);
+        u_namefield.setBackground(new java.awt.Color(255, 255, 255));
+        u_namefield.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
+        u_namefield.setText("Username");
+        u_namefield.setBorder(null);
+        u_namefield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                u_namefieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                u_namefieldFocusLost(evt);
+            }
+        });
+        u_namefield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                u_namefieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout userBGPanelLayout = new javax.swing.GroupLayout(userBGPanel);
+        userBGPanel.setLayout(userBGPanelLayout);
+        userBGPanelLayout.setHorizontalGroup(
+            userBGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userBGPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(u_namefield, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        userBGPanelLayout.setVerticalGroup(
+            userBGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userBGPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(u_namefield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(logoImage, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -115,7 +138,7 @@ RoundedTextField textField = new RoundedTextField();
                             .addComponent(u_passfield, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(u_namefield, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(userBGPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(83, 83, 83))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,8 +154,8 @@ RoundedTextField textField = new RoundedTextField();
                 .addComponent(logoImage)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(u_namefield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userBGPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -141,7 +164,7 @@ RoundedTextField textField = new RoundedTextField();
                 .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registerNewMem)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -219,5 +242,6 @@ RoundedTextField textField = new RoundedTextField();
     private javax.swing.JLabel registerNewMem;
     private javax.swing.JTextField u_namefield;
     private javax.swing.JPasswordField u_passfield;
+    private javax.swing.JPanel userBGPanel;
     // End of variables declaration//GEN-END:variables
 }
