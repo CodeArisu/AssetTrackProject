@@ -14,7 +14,7 @@ public class Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        userPanel2 = new com.login.model.userPanel();
+        userPanel2 = new com.login.model.LoginPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(600, 250, 0, 0));
@@ -70,6 +70,6 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.login.model.userPanel userPanel2;
+    private com.login.model.LoginPanel userPanel2;
     // End of variables declaration//GEN-END:variables
 }

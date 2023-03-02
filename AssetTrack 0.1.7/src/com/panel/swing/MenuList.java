@@ -2,6 +2,7 @@
 package com.panel.swing;
 
 import com.panel.model.MenuModel;
+import com.panels.MenuSelection;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -17,6 +18,12 @@ public class MenuList<E extends Object> extends JList<E> {
     private final DefaultListModel model;
     private int selectedIndex = -1;
     private int hoverIndex = -1;
+    private MenuSelection event;
+    
+    public void addMenuSelection(MenuSelection evt)
+    {
+        this.event = evt;
+    }
     
     public MenuList() 
     {
@@ -36,12 +43,15 @@ public class MenuList<E extends Object> extends JList<E> {
                             if(menu.getType() == MenuModel.MenuType.MENU)
                             {
                             selectedIndex = index;
+                            if(event != null)
+                                {
+                                   event.Selected(index);
+                                }
                             }
-                         } else 
-                            
+                        } else 
                         {
-                    selectedIndex = index;
-                    }
+                            selectedIndex = index;
+                        }
                 repaint();
               }
           }

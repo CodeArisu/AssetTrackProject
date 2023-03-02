@@ -1,6 +1,7 @@
 package com.panel.component;
 
 import com.panel.model.MenuModel;
+import com.panels.MenuSelection;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -12,7 +13,15 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.JFrame;
 
 public class SidePanel extends javax.swing.JPanel {
-
+    
+    private MenuSelection event;
+    
+    public void addMenuSelection(MenuSelection evt)
+    {
+        this.event = evt;
+        menuList1.addMenuSelection(event);
+    }
+    
     public SidePanel() {
         initComponents();
         setOpaque(false);
@@ -24,13 +33,12 @@ public class SidePanel extends javax.swing.JPanel {
     {   
         menuList1.addItem(new MenuModel("home", "HOME", MenuModel.MenuType.MENU));
         menuList1.addItem(new MenuModel("dashboard", "DASHBOARD", MenuModel.MenuType.MENU));
-        menuList1.addItem(new MenuModel("database", "DATABASE", MenuModel.MenuType.MENU));
+        menuList1.addItem(new MenuModel("setting", "SETTINGS", MenuModel.MenuType.MENU));
         
         menuList1.addItem(new MenuModel("", "", MenuModel.MenuType.EMPTY));
-   
-        menuList1.addItem(new MenuModel("", "Account", MenuModel.MenuType.TITLE));
-        menuList1.addItem(new MenuModel("account", "Admin", MenuModel.MenuType.MENU));
-        menuList1.addItem(new MenuModel("setting", "Settings", MenuModel.MenuType.MENU));
+        menuList1.addItem(new MenuModel("", "Data", MenuModel.MenuType.TITLE));
+                
+        menuList1.addItem(new MenuModel("database", "DATABASE", MenuModel.MenuType.MENU));
     }
     
     @SuppressWarnings("unchecked")

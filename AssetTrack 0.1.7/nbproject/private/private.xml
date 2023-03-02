@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ROLANDO%20GERONA%20JR/Documents/NetBeansProjects/AssetTrackProject/AssetTrack%200.1.7/src/com/login/model/LoginInterface.java</file>
-            <file>file:/C:/Users/ROLANDO%20GERONA%20JR/Documents/NetBeansProjects/AssetTrackProject/AssetTrack%200.1.7/src/com/login/model/LoginSidePanel.java</file>
+            <file>file:/C:/Users/ROLANDO%20GERONA%20JR/Documents/NetBeansProjects/AssetTrackProject/AssetTrack%200.1.7/src/com/panel/component/SidePanel.java</file>
+            <file>file:/C:/Users/ROLANDO%20GERONA%20JR/Documents/NetBeansProjects/AssetTrackProject/AssetTrack%200.1.7/src/com/panels/MenuSelection.java</file>
+            <file>file:/C:/Users/ROLANDO%20GERONA%20JR/Documents/NetBeansProjects/AssetTrackProject/AssetTrack%200.1.7/src/com/panel/swing/MenuList.java</file>
+            <file>file:/C:/Users/ROLANDO%20GERONA%20JR/Documents/NetBeansProjects/AssetTrackProject/AssetTrack%200.1.7/src/com/main/Main.java</file>
             <file>file:/C:/Users/ROLANDO%20GERONA%20JR/Documents/NetBeansProjects/AssetTrackProject/AssetTrack%200.1.7/src/com/main/Admin.java</file>
         </group>
     </open-files>

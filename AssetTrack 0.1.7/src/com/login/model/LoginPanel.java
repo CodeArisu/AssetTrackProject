@@ -10,11 +10,11 @@ import java.sql.SQLException;
 import java.awt.Color;
 import java.awt.Font;
 
-public class userPanel extends javax.swing.JPanel {
+public class LoginPanel extends javax.swing.JPanel {
     
 
 
-    public userPanel() {
+    public LoginPanel() {
         initComponents();
         
         u_namefield.setFont(new Font("Lato", Font.BOLD, 14));
@@ -88,7 +88,6 @@ public class userPanel extends javax.swing.JPanel {
         userBGPanel.setOpaque(false);
 
         u_namefield.setOpaque(false);
-        u_namefield.setBackground(new java.awt.Color(255, 255, 255));
         u_namefield.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         u_namefield.setText("Username");
         u_namefield.setBorder(null);
