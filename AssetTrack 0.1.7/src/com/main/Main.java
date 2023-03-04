@@ -2,13 +2,11 @@
 package com.main;
 
 import com.panel.form.Dashboard_Form;
-import com.panel.form.Database_Form;
 import com.panel.form.Home_Form;
 import com.panel.form.Settings_Form;
 import com.panels.MenuSelection;
 import java.awt.Color;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 
 public class Main extends javax.swing.JFrame {
     
@@ -29,8 +27,6 @@ public class Main extends javax.swing.JFrame {
                     setForm(new Dashboard_Form());
                 } else if (index == 2){
                     setForm(new Settings_Form());
-                } else if (index == 5){ 
-                    setForm(new Database_Form());
                 }
             }
         });

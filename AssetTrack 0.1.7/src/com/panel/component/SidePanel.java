@@ -32,13 +32,8 @@ public class SidePanel extends javax.swing.JPanel {
      private void init() //edit desired list side panel
     {   
         menuList1.addItem(new MenuModel("home", "HOME", MenuModel.MenuType.MENU));
-        menuList1.addItem(new MenuModel("dashboard", "DASHBOARD", MenuModel.MenuType.MENU));
-        menuList1.addItem(new MenuModel("setting", "SETTINGS", MenuModel.MenuType.MENU));
-        
-        menuList1.addItem(new MenuModel("", "", MenuModel.MenuType.EMPTY));
-        menuList1.addItem(new MenuModel("", "Data", MenuModel.MenuType.TITLE));
-                
         menuList1.addItem(new MenuModel("database", "DATABASE", MenuModel.MenuType.MENU));
+        menuList1.addItem(new MenuModel("setting", "SETTINGS", MenuModel.MenuType.MENU));
     }
     
     @SuppressWarnings("unchecked")
@@ -102,7 +97,7 @@ public class SidePanel extends javax.swing.JPanel {
     }
     
      private int x;
-    private int y;
+     private int y;
     
     public void inDrag(JFrame frame)
     {
