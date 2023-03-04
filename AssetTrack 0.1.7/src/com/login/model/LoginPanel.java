@@ -10,21 +10,15 @@ import java.sql.SQLException;
 import java.awt.Color;
 import java.awt.Font;
 
-
 public class LoginPanel extends javax.swing.JPanel {
-    
-
 
     public LoginPanel() {
         initComponents();
-        u_namefield.setOpaque(false);
         
-        u_passfield.setOpaque(false);
-        
-        jLabel1.setFont( new Font("Lato", Font.BOLD, 14));
-        jLabel1.setForeground(new Color(255,255,255));
-        jLabel2.setFont( new Font("Lato", Font.BOLD, 14));
-        jLabel2.setForeground(new Color(255,255,255));
+        usernameLabel.setFont( new Font("Lato", Font.BOLD, 14));
+        usernameLabel.setForeground(new Color(255,255,255));
+        passwordLabel.setFont( new Font("Lato", Font.BOLD, 14));
+        passwordLabel.setForeground(new Color(255,255,255));
         
         loginButton.setText("Login");
         loginButton.setFont( new Font("Lato", Font.BOLD, 14));
@@ -32,6 +26,7 @@ public class LoginPanel extends javax.swing.JPanel {
         loginButton.setFocusable(false);
         
         registerNewMem.setFont( new Font("Lato", Font.BOLD, 12));
+        
         
     }
 
@@ -42,8 +37,8 @@ public class LoginPanel extends javax.swing.JPanel {
         logoImage = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
         registerNewMem = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
         u_namefield = new com.panel.swing.CustomTextField();
         u_passfield = new com.panel.swing.CustomPassField();
 
@@ -72,15 +67,39 @@ public class LoginPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel1.setText("Username");
+        usernameLabel.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        usernameLabel.setText("Username");
 
-        jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel2.setText("Password");
+        passwordLabel.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        passwordLabel.setText("Password");
 
         u_namefield.setForeground(new java.awt.Color(51, 51, 51));
+        u_namefield.setOpaque(true);
+        u_namefield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                u_namefieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                u_namefieldFocusLost(evt);
+            }
+        });
+        u_namefield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                u_namefieldActionPerformed(evt);
+            }
+        });
 
         u_passfield.setForeground(new java.awt.Color(51, 51, 51));
+        u_passfield.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        u_passfield.setOpaque(true);
+        u_passfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                u_passfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                u_passfieldFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,8 +109,8 @@ public class LoginPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(u_namefield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(u_passfield, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -111,11 +130,11 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addGap(66, 66, 66)
                 .addComponent(logoImage)
                 .addGap(58, 58, 58)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(u_namefield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(u_passfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
@@ -159,15 +178,47 @@ public class LoginPanel extends javax.swing.JPanel {
     private void registerNewMemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerNewMemMouseClicked
         JOptionPane.showMessageDialog(null, "To access the system, please contact the administrator!");
     }//GEN-LAST:event_registerNewMemMouseClicked
+
+    private void u_namefieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_u_namefieldFocusGained
+        if (u_namefield.getText().equals("Username")){
+            u_namefield.setText("");
+            u_namefield.setForeground(new Color(51, 51, 51));
+        }
+    }//GEN-LAST:event_u_namefieldFocusGained
+
+    private void u_namefieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_u_namefieldFocusLost
+        if (u_namefield.getText().equals("Username") || u_namefield.getText().equals("")){
+            u_namefield.setForeground(new Color (102, 102, 102));
+            u_namefield.setText("Username");
+        }
+    }//GEN-LAST:event_u_namefieldFocusLost
+
+    private void u_namefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_namefieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_u_namefieldActionPerformed
+
+    private void u_passfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_u_passfieldFocusLost
+        if (u_passfield.getText().equals("Password")|| u_passfield.getText().equals("")){
+            u_passfield.setForeground(new Color(102, 102, 102));
+            u_passfield.setText("Password");
+    }
+    }//GEN-LAST:event_u_passfieldFocusLost
+
+    private void u_passfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_u_passfieldFocusGained
+        if (u_passfield.getText().equals("Password")){
+            u_passfield.setText("");
+            u_passfield.setForeground(new Color(51, 51, 51));
+        }
+    }//GEN-LAST:event_u_passfieldFocusGained
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoImage;
+    private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel registerNewMem;
     private com.panel.swing.CustomTextField u_namefield;
     private com.panel.swing.CustomPassField u_passfield;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }
