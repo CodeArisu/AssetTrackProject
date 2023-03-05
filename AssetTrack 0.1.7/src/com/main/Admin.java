@@ -1,4 +1,3 @@
-
 package com.main;
 
 import java.awt.Color;
@@ -34,11 +33,6 @@ public class Admin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Login successful!");
                 this.setVisible(false);
                 
-                com.main.Admin admin = new com.main.Admin();
-                admin.setVisible(false);
-                
-                com.main.Main Main = new com.main.Main();
-                Main.setVisible(true);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
@@ -50,7 +44,7 @@ public class Admin extends javax.swing.JFrame {
         }
     }               
      
-      private int x;
+    private int x;
     private int y;
     
     public void initDrag(JFrame fram) {
@@ -95,6 +89,8 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icon/icons8-user-24 (1).png"))); // NOI18N
+
+        passtext.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icon/rsz_1logo_transparent.png"))); // NOI18N
@@ -237,7 +233,7 @@ public class Admin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new Admin().setVisible(true);
             }
         });
     }
