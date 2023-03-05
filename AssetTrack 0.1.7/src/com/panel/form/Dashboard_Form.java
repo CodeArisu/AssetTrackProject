@@ -18,7 +18,7 @@ public class Dashboard_Form extends javax.swing.JPanel {
     public Dashboard_Form() {
         initComponents();
         Inventory();
-        header.setBackground(Color.decode("#00C6FB"));
+        header.setBackground(Color.decode("#2C74B3"));
     }
 
     private void Inventory() {

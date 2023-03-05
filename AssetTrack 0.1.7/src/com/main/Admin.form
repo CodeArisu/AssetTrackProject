@@ -41,7 +41,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="com.login.model.LoginPanel" name="userPanel2">
+    <Component class="com.main.LoginPanel" name="userPanel2">
     </Component>
   </SubComponents>
 </Form>

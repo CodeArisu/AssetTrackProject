@@ -1,5 +1,5 @@
 
-package com.login.model;
+package com.main;
 
 import javax.swing.JOptionPane;
 import java.sql.Connection;

@@ -1,5 +1,5 @@
 
-package com.panels;
+package com.panel.model;
 
 public interface MenuSelection {
     

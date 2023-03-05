@@ -19,6 +19,17 @@ import javax.swing.table.DefaultTableModel;
 
 public final class Home_Form extends javax.swing.JPanel {
 
+     public Home_Form() {
+        InventoryTable();
+        updateTable();
+        initComponents();
+
+        header.setBackground(Color.decode("#2C74B3"));
+        addPanel.setBackground(Color.decode("#2C74B3"));
+        tablepanel.setBackground(Color.decode("#2C74B3"));
+        addhead.setBackground(Color.decode("#005BEA"));
+    }
+    
     void InventoryTable() {
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -44,17 +55,6 @@ public final class Home_Form extends javax.swing.JPanel {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public Home_Form() {
-        InventoryTable();
-        updateTable();
-        initComponents();
-
-        header.setBackground(Color.decode("#00C6FB"));
-        addPanel.setBackground(Color.decode("#00C6FB"));
-        tablepanel.setBackground(Color.decode("#00C6FB"));
-        addhead.setBackground(Color.decode("#005BEA"));
     }
 
     void addItem() {
@@ -198,7 +198,7 @@ public final class Home_Form extends javax.swing.JPanel {
         mlabel4.setText("QUANTITY");
         mlabel4.setToolTipText("");
 
-        addhead.setBackground(new java.awt.Color(153, 153, 255));
+        addhead.setBackground(new java.awt.Color(204, 204, 255));
         addhead.setForeground(new java.awt.Color(102, 102, 255));
 
         mlabel2.setFont(new java.awt.Font("Myanmar Text", 1, 18)); // NOI18N

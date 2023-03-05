@@ -23,7 +23,7 @@ public class MenuItem extends javax.swing.JPanel {
         } else if (data.getType() == MenuModel.MenuType.TITLE)
         {
              micon.setText(data.getName());
-             micon.setFont(new Font("Lato", 1, 12));
+             micon.setFont(new Font("Lato", 1, 16));
              mlabel.setVisible(false);
         } else 
         {
