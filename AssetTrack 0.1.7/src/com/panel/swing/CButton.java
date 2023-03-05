@@ -27,10 +27,10 @@ public class CButton extends JButton {
     public CButton(){
         
         setVerticalAlignment(JButton.CENTER);
-        filloriginal = new Color(225,102,102);
+        filloriginal = new Color(225,255,255);
         fillover = new Color(153,153,255);
         fillclick = new Color(102,102,255);
-        lineoriginal = new Color(236,240,241);
+        lineoriginal = new Color(255,255,255);
         lineover = new Color(189, 195, 199);
         strokeWidth = 2;
         fill = filloriginal;
@@ -41,7 +41,7 @@ public class CButton extends JButton {
         setContentAreaFilled(false);
         setBackground(filloriginal);
         setFont(new Font("Lato", Font.BOLD, 18));
-        setForeground(Color.WHITE);
+        setForeground(Color.decode("#0A2647"));
         
         addMouseListener(new MouseAdapter() {
             

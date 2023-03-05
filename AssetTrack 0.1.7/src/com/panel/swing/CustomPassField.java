@@ -8,13 +8,14 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPasswordField;
+import javax.swing.border.EmptyBorder;
 
 public class CustomPassField extends JPasswordField{
     
     private boolean mouseOver = false;
     
      public CustomPassField() {
-         
+         setBorder(new EmptyBorder(20,3,10,3));
          setOpaque(false);
          
         addMouseListener(new MouseAdapter(){
