@@ -78,9 +78,9 @@ public class Menu extends javax.swing.JPanel implements Runnable{
 
         drag = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        listMenu1 = new com.panel.swing.ListMenu<>();
         TimeHour = new javax.swing.JLabel();
         TimeDate = new javax.swing.JLabel();
+        listMenu1 = new com.panel.swing.ListMenu<>();
 
         drag.setOpaque(false);
 
@@ -92,14 +92,23 @@ public class Menu extends javax.swing.JPanel implements Runnable{
         dragLayout.setHorizontalGroup(
             dragLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dragLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dragLayout.setVerticalGroup(
             dragLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, Short.MAX_VALUE)
         );
+
+        TimeHour.setBackground(new java.awt.Color(255, 255, 255));
+        TimeHour.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        TimeHour.setForeground(new java.awt.Color(255, 255, 255));
+        TimeHour.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        TimeDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        TimeDate.setForeground(new java.awt.Color(255, 255, 255));
+        TimeDate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         listMenu1.setOpaque(false);
 
@@ -108,28 +117,23 @@ public class Menu extends javax.swing.JPanel implements Runnable{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(drag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TimeDate, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(TimeDate, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(TimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(drag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TimeHour)
-                        .addGap(18, 18, 18)
-                        .addComponent(TimeDate)
-                        .addGap(46, 46, 46))))
+                .addGap(0, 0, 0)
+                .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TimeDate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

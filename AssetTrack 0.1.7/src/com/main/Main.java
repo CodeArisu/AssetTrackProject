@@ -1,8 +1,8 @@
 
 package com.main;
 
-import com.panel.form.Database;
 import com.panel.form.Dashboard;
+import com.panel.form.Database;
 import com.panel.form.Settings_Form;
 import com.panel.model.MenuSelection;
 import java.awt.Color;
@@ -19,16 +19,16 @@ public class Main extends javax.swing.JFrame {
         setBackground(new Color(0,0,0,0));
         menu1.initDrag(Main.this);
     
-        setForm(new Database());
+        setForm(new Dashboard());
         menu1.addEventMenuSelected(new MenuSelection() 
         {
             @Override
             public void Selected (int index)
             {
                 if(index == 1) {
-                    setForm(new Database());
-                } else if (index == 2){
                     setForm(new Dashboard());
+                } else if (index == 2){
+                    setForm(new Database());
                 } else if (index == 3){
                     setForm(new Settings_Form());
                 }
