@@ -1,12 +1,15 @@
 
 package com.main;
 
-import com.panel.form.Dashboard_Form;
-import com.panel.form.Home_Form;
+import com.panel.form.Database;
+import com.panel.form.Dashboard;
 import com.panel.form.Settings_Form;
 import com.panel.model.MenuSelection;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 public class Main extends javax.swing.JFrame {
     
@@ -15,18 +18,18 @@ public class Main extends javax.swing.JFrame {
         setVisible(false);
         setBackground(new Color(0,0,0,0));
         menu1.initDrag(Main.this);
-        
-        setForm(new Home_Form());
+    
+        setForm(new Database());
         menu1.addEventMenuSelected(new MenuSelection() 
         {
             @Override
             public void Selected (int index)
             {
-                if(index == 0) {
-                    setForm(new Home_Form());
-                } else if (index == 1){
-                    setForm(new Dashboard_Form());
+                if(index == 1) {
+                    setForm(new Database());
                 } else if (index == 2){
+                    setForm(new Dashboard());
+                } else if (index == 3){
                     setForm(new Settings_Form());
                 }
             }
@@ -39,6 +42,7 @@ public class Main extends javax.swing.JFrame {
         mainpanel.repaint();
         mainpanel.revalidate();
     }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -61,19 +65,22 @@ public class Main extends javax.swing.JFrame {
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(mainpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(mainpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
-            .addComponent(mainpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addComponent(mainpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBorder1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +88,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

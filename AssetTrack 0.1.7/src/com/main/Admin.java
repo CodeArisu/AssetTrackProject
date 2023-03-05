@@ -10,7 +10,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -22,7 +21,7 @@ public class Admin extends javax.swing.JFrame {
         initDrag(Admin.this);
     }
     
-     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
+     private void loginButtonActionPerformed() {                                            
         String getUsername = usertext.getText();
         String getPassword = passtext.getText();
         
@@ -81,8 +80,8 @@ public class Admin extends javax.swing.JFrame {
         passtext = new com.panel.swing.CustomPassField();
         jLabel3 = new javax.swing.JLabel();
         registerNewMem = new javax.swing.JLabel();
+        log = new test.CButton();
         usertext = new com.panel.swing.CustomTextField();
-        cButton1 = new test.CButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(600, 250, 0, 0));
@@ -111,17 +110,18 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        usertext.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icon/icons8-user-24 (1).png"))); // NOI18N
-        usertext.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                usertextFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                usertextFocusLost(evt);
+        log.setText("Login");
+        log.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logActionPerformed(evt);
             }
         });
 
-        cButton1.setText("Login");
+        usertext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usertextActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
@@ -138,7 +138,7 @@ public class Admin extends javax.swing.JFrame {
                     .addComponent(usertext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
+                .addContainerGap(138, Short.MAX_VALUE)
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,7 +147,7 @@ public class Admin extends javax.swing.JFrame {
                         .addComponent(registerNewMem, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(114, 114, 114))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                        .addComponent(cButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(log, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(171, 171, 171))))
         );
         loginLayout.setVerticalGroup(
@@ -155,22 +155,22 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(loginLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(usertext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(passtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(loginLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel2)
                         .addGap(44, 44, 44)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(loginLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(usertext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(passtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(cButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(log, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registerNewMem)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
@@ -203,19 +203,13 @@ public class Admin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "To access the system, please contact the administrator!");
     }//GEN-LAST:event_registerNewMemMouseClicked
 
-    private void usertextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usertextFocusGained
-        if (usertext.getText().equals("Username")){
-            usertext.setText("");
-            usertext.setForeground(new Color(51, 51, 51));
-        }
-    }//GEN-LAST:event_usertextFocusGained
+    private void logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logActionPerformed
+        loginButtonActionPerformed();
+    }//GEN-LAST:event_logActionPerformed
 
-    private void usertextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usertextFocusLost
-        if (usertext.getText().equals("Username") || usertext.getText().equals("")){
-            usertext.setForeground(new Color (102, 102, 102));
-            usertext.setText("Username");
-        }
-    }//GEN-LAST:event_usertextFocusLost
+    private void usertextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usertextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertextActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -243,16 +237,16 @@ public class Admin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Admin().setVisible(true);
+                new Main().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private test.CButton cButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private test.CButton log;
     private com.main.gradient login;
     private com.panel.swing.PanelBorder panelBorder1;
     private com.panel.swing.CustomPassField passtext;
