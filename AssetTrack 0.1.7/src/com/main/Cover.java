@@ -53,7 +53,7 @@ public class Cover extends javax.swing.JPanel {
         discription.setFont(new Font("Lato", Font.BOLD, 18));
         discription.setForeground(new Color(245,245,245));
         add(discription);
-        sign = new JButton("Already have an Account? Sign In!");
+        sign = new JButton("Already Have an Account? Sign In!");
         sign.setForeground(new Color(255,255,255));
         sign.setContentAreaFilled(false);
         sign.setFocusable(false);
@@ -105,7 +105,7 @@ public class Cover extends javax.swing.JPanel {
     public void registerLeft(double v) {
         v = Double.valueOf(df.format(v));
         login(false);
-        
+        layout.setComponentConstraints(logo, "pad 0 -" + v + "% 0 " + "%");
         layout.setComponentConstraints(discription, "pad 0 -" + v + "% 0 0");
         layout.setComponentConstraints(sign, "pad 0 -" + v + "% 0 0");
     }
@@ -113,7 +113,7 @@ public class Cover extends javax.swing.JPanel {
      public void registerRight(double v) {
         v = Double.valueOf(df.format(v));
         login(false);
-        
+        layout.setComponentConstraints(logo, "pad 0 -" + v + "% 0 " + "%");
         layout.setComponentConstraints(discription, "pad 0 -" + v + "% 0 0");
         layout.setComponentConstraints(sign, "pad 0 -" + v + "% 0 0");
     }
@@ -121,7 +121,7 @@ public class Cover extends javax.swing.JPanel {
      public void loginLeft(double v) {
         v = Double.valueOf(df.format(v));
         login(true);
-       
+        layout.setComponentConstraints(logo, "pad 0 " + v + "% 0 " + v + "%");
         layout.setComponentConstraints(discription, "pad 0 " + v + "% 0 " + v + "%");
         layout.setComponentConstraints(sign, "pad 0 " + v + "% 0 " + v + "%");
     }
@@ -129,7 +129,7 @@ public class Cover extends javax.swing.JPanel {
      public void loginRight(double v) {
         v = Double.valueOf(df.format(v));
         login(true);
-        
+        layout.setComponentConstraints(logo, "pad 0 " + v + "% 0 " + v + "%");
         layout.setComponentConstraints(discription, "pad 0 " + v + "% 0 " + v + "%");
         layout.setComponentConstraints(sign, "pad 0 " + v + "% 0 " + v + "%");
 
@@ -137,7 +137,7 @@ public class Cover extends javax.swing.JPanel {
     private void login(boolean login) {
         if(this.isLogin != login) {
             if(login) {
-                discription.setText("Hello and Welcome Back!");
+                discription.setText("Hello And Welcome Back!");
                 sign.setText("No Existing Account? Sign Up Now!");
             } else {
                 discription.setText("Welcome! To AssetTrack");

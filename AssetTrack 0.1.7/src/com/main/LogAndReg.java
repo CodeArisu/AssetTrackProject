@@ -58,7 +58,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         Register.add(passtext, "w 60%");
         CButton cb = new CButton();
         cb.setForeground(new Color(250,250,250));
-        cb.setText("Create Account");
+        cb.setText("CREATE ACCOUNT");
         cb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -73,6 +73,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         Login.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]10[]10[]10[]push"));
         JLabel label = new JLabel("Sign In");
         label.setFont(new Font("Lato", 1, 30));
+        label.setForeground(Color.decode("#0A2647"));
         Login.add(label);
         usertext = new CustomTextField();
         usertext.setLabelText("Username");
@@ -100,10 +101,10 @@ public class LogAndReg extends javax.swing.JLayeredPane {
             public void actionPerformed(ActionEvent e) {
                 if(usertext.getText().equals("Admin") && passtext.getText().equals("Admin")) {
                     JOptionPane.showMessageDialog(null, "Log In Successfully");
-                    main = new Main();
-                    main.setVisible(true);
                     admin = new Admin();
                     admin.dispose();
+                    main = new Main();
+                    main.setVisible(true);
                 } else JOptionPane.showMessageDialog(null, "Account Doesn't Existed");
                 }
         });
