@@ -27,6 +27,9 @@ public class Dashboard extends javax.swing.JPanel {
     public String status;
     private int x;
     private int y;
+    String[] typeComboBox = {" ", "Bakery", "Beverages", "Canned", "Dairy", "Dry/Baking Goods", "Frozen Foods", "Meat", "Produce", "Cleaners", "Paper Goods", "Personal Care", "Others"};
+    
+    
     
     public Dashboard() {
         initComponents();
@@ -68,19 +71,19 @@ public class Dashboard extends javax.swing.JPanel {
 
     void addItem() {
         String itemName = itemNameField.getText();
-        String itemType = itemTypeField.getText();
+        String itemType = itemTypeBox.getSelectedItem().toString();
         int quantity = Integer.parseInt(quantityField.getText());
         String status = statusField.getText();
 
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dashboardinformation", "root", "");
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO `inventoryitems`(`ID`, `Item_Name`, `Item_Type`, `Quantity`, `Status`) VALUES (?,?,?,?,?)");
-            long ID = (long) (Math.random() * 1000000);
-            ps.setLong(1, ID);
-            ps.setString(2, itemName);
-            ps.setString(3, itemType);
-            ps.setInt(4, quantity);
-            ps.setString(5, status);
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `inventoryitems`(`Item_Name`, `Item_Type`, `Quantity`, `Status`) VALUES (?,?,?,?)");
+
+
+            ps.setString(1, itemName);
+            ps.setString(2, itemType);
+            ps.setInt(3, quantity);
+            ps.setString(4, status);
             ps.executeUpdate();
             Inventory();
             LogUpdate(status);
@@ -104,7 +107,7 @@ public class Dashboard extends javax.swing.JPanel {
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Record Delete");
                 Inventory();
-                LogUpdate(status);
+                LogUpdate("Deleted");
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -114,7 +117,7 @@ public class Dashboard extends javax.swing.JPanel {
     void updateItem() {
         DefaultTableModel model = (DefaultTableModel) a.getModel();
         String itemName = itemNameField.getText();
-        String itemType = itemTypeField.getText();
+        String itemType = itemTypeBox.getSelectedItem().toString();
         int quantity = Integer.parseInt(quantityField.getText());
         int selectedIndex = a.getSelectedRow();
         int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
@@ -141,7 +144,13 @@ public class Dashboard extends javax.swing.JPanel {
         DefaultTableModel tableModel = (DefaultTableModel) a.getModel();
         int selectedIndex = a.getSelectedRow();
         itemNameField.setText(tableModel.getValueAt(selectedIndex, 1).toString());
-        itemTypeField.setText(tableModel.getValueAt(selectedIndex, 2).toString());
+        String getType = tableModel.getValueAt(selectedIndex, 2).toString();
+        for (int i = 0; i < typeComboBox.length;i++) {
+            if (typeComboBox[i].equals(getType)) {
+                itemTypeBox.setSelectedIndex(i);
+                break;
+            }
+        }
         quantityField.setText(tableModel.getValueAt(selectedIndex, 3).toString());
         statusField.setText(tableModel.getValueAt(selectedIndex, 4).toString());
     }
@@ -209,7 +218,6 @@ public class Dashboard extends javax.swing.JPanel {
 
     void LogUpdate(String status)  {
         DefaultTableModel mainTable = (DefaultTableModel) a.getModel();
-
         int selectedIndex = a.getSelectedColumn();
 //        int id = Integer.parseInt(mainTable.getValueAt(selectedIndex, 0).toString());
       
@@ -245,7 +253,6 @@ public class Dashboard extends javax.swing.JPanel {
         mlabel1 = new javax.swing.JLabel();
         icon1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        itemTypeField = new javax.swing.JTextField();
         quantityField = new javax.swing.JTextField();
         itemNameField = new javax.swing.JTextField();
         statusField = new javax.swing.JTextField();
@@ -257,6 +264,7 @@ public class Dashboard extends javax.swing.JPanel {
         deleteButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
+        itemTypeBox = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -320,7 +328,7 @@ public class Dashboard extends javax.swing.JPanel {
         mlabel3.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         mlabel3.setForeground(new java.awt.Color(30, 30, 30));
         mlabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        mlabel3.setText("Status:");
+        mlabel3.setText("Note:");
 
         mlabel6.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         mlabel6.setForeground(new java.awt.Color(30, 30, 30));
@@ -376,6 +384,13 @@ public class Dashboard extends javax.swing.JPanel {
             }
         });
 
+        itemTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Bakery", "Beverages", "Canned", "Dairy", "Dry/Baking Goods", "Frozen Foods", "Meat", "Produce", "Cleaners", "Paper Goods", "Personal Care", "Others" }));
+        itemTypeBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemTypeBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -386,8 +401,8 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(mlabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(itemTypeField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                    .addComponent(itemNameField))
+                    .addComponent(itemNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(itemTypeBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -400,13 +415,13 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(statusField)
                     .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(updateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(updateButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -419,26 +434,29 @@ public class Dashboard extends javax.swing.JPanel {
                             .addComponent(mlabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(itemNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(itemTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mlabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(mlabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mlabel8)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(updateButton)
-                                .addComponent(deleteButton)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(statusField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(addButton)
-                                .addComponent(clearButton))
-                            .addComponent(mlabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(mlabel8)
+                                    .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(addButton)
+                                    .addComponent(deleteButton)
+                                    .addComponent(clearButton)
+                                    .addComponent(updateButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(statusField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mlabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(itemTypeBox))))
+                .addContainerGap())
         );
 
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -674,24 +692,24 @@ public class Dashboard extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         addItem();
-        LogUpdate("Added");
+       
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         deleteItem();
-        LogUpdate("Deleted");
+        
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         itemNameField.setText("");
-        itemTypeField.setText("");
+        itemTypeBox.getEditor().setItem("");
         quantityField.setText("");
         statusField.setText("");
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         updateItem();
-        LogUpdate("Updated");
+        
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void aMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aMouseClicked
@@ -722,6 +740,19 @@ public class Dashboard extends javax.swing.JPanel {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
        searchOnTable();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void itemTypeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTypeBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemTypeBoxActionPerformed
+
+    public void getCurrentUserLogin(String getUsername, String getPassword) {
+       try { Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_database", "root", "");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `user_info` WHERE `username`= '" + getUsername + "' AND `password` = '" + getPassword + "'");
+            ResultSet rs = ps.executeQuery();
+       } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+       }
+    }
     private static class st {
 
         private static ResultSet executeQuery(String sql) {
@@ -740,7 +771,7 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JPanel header;
     private javax.swing.JLabel icon1;
     private javax.swing.JTextField itemNameField;
-    private javax.swing.JTextField itemTypeField;
+    private javax.swing.JComboBox<String> itemTypeBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
