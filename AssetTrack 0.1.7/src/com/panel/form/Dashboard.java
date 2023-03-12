@@ -594,9 +594,9 @@ public class Dashboard extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(a);
         if (a.getColumnModel().getColumnCount() > 0) {
+            a.getColumnModel().getColumn(0).setMaxWidth(200);
             a.getColumnModel().getColumn(1).setResizable(false);
-            a.getColumnModel().getColumn(3).setResizable(false);
-            a.getColumnModel().getColumn(4).setResizable(false);
+            a.getColumnModel().getColumn(3).setMaxWidth(200);
         }
 
         updateLog.setModel(new javax.swing.table.DefaultTableModel(
