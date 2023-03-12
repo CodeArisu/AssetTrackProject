@@ -30,6 +30,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
     
     private CustomTextField usertext;
     private CustomPassField passtext;
+    private CustomPassField retypePass;
     private Main main;
     private Admin admin;
     
@@ -47,28 +48,38 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         label.setFont(new Font("Lato", 1, 30));
         label.setForeground(Color.decode("#0A2647"));
         Register.add(label);
+        
         usertext = new CustomTextField();
         usertext.setLabelText("Username");
         Register.add(usertext, "w 60%");
+        
         passtext = new CustomPassField();
         passtext.setLabelText("Password");
         Register.add(passtext, "w 60%");
-        passtext = new CustomPassField();
-        passtext.setLabelText("Re-Type Password");
-        Register.add(passtext, "w 60%");
+        
+        retypePass = new CustomPassField();
+        retypePass.setLabelText("Re-Type Password");
+        Register.add(retypePass, "w 60%");
+        
+        
+        //Create Account button creation
         CButton cb = new CButton();
         cb.setForeground(new Color(250,250,250));
         cb.setText("CREATE ACCOUNT");
         cb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Not Applicable Yet");
+                
+                registerButtonActionPerformed();
+                // JOptionPane.showMessageDialog(null, "Not Applicable Yet");
+                
                 }
         });
         Register.add(cb, "w 30%, h 50");
         
     }
     
+    //Login Part
     private void initLogin() {
         Login.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]10[]10[]10[]push"));
         JLabel label = new JLabel("Sign In");
@@ -96,9 +107,15 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         CButton cb = new CButton();
         cb.setForeground(new Color(250,250,250));
         cb.setText("LOG IN");
+        
+        // Login button function, checks database if user & password is present
         cb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                loginButtonActionPerformed();
+            }
+            
+            /* commented for experimental purposes
                 if(usertext.getText().equals("Admin") && passtext.getText().equals("Admin")) {
                     JOptionPane.showMessageDialog(null, "Log In Successfully");
                     admin = new Admin();
@@ -107,6 +124,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
                     main.setVisible(true);
                 } else JOptionPane.showMessageDialog(null, "Account Doesn't Existed");
                 }
+*/
         });
         Login.add(cb, "w 30%, h 50");
     }
@@ -160,6 +178,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         add(Register, "card2");
     }// </editor-fold>//GEN-END:initComponents
     
+    // Login button real function
     private void loginButtonActionPerformed() {                                            
         String getUsername = usertext.getText();
         String getPassword = passtext.getText();
@@ -173,16 +192,61 @@ public class LogAndReg extends javax.swing.JLayeredPane {
                 JOptionPane.showMessageDialog(null, "Login successful!");
                 this.setVisible(false);
                 
+                admin = new Admin();
+                admin.setVisible(false);
+                main = new Main();
+                main.setVisible(true);
+                
             }
             else{
                 JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
             }
         }
-        
         catch(SQLException sqlException){
         }
-    }               
+      
+    }
+    //Register button real function 
+    private void registerButtonActionPerformed(){
+        
+        String getUsername = usertext.getText();
+        String getPassword = passtext.getText();
+        String getRetypePass = retypePass.getText();
+        
+        
+        try{
+        
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/loginpage", "root", "");
+            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) FROM `login_information` WHERE `usernameField` = ? AND `passwordField`= ?");
+            ps.setString(1, getUsername);
+            ps.setString(2, getPassword);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next() && rs.getInt(1) == 0){
+                PreparedStatement insertData  = connection.prepareStatement("INSERT INTO `login_information`(`usernameField`, `passwordField`) VALUES (?, ?);");
+                insertData.setString(1, getUsername);
+                insertData.setString(2, getPassword);
+                
+                insertData.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Successfully registered!");
+            }
+            
+            else if (getPassword != getRetypePass){
+                JOptionPane.showMessageDialog(null, "Passwords do not match!");
+            }
+            
+            else{
+                JOptionPane.showMessageDialog(null, "User already exists!");
+            }
+        }
+        
+        catch(SQLException sqlException){
+            
+        }
+        
+    }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Login;
     private javax.swing.JPanel Register;

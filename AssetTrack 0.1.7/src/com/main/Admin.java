@@ -27,7 +27,7 @@ public class Admin extends javax.swing.JFrame {
     public Admin() {
         initComponents();
         setBackground(new Color(0,0,0,0));
-        //initDrag(Admin.this);
+        initDrag(Admin.this);
         init();
     }
     
