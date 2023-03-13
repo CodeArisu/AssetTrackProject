@@ -633,12 +633,26 @@ public class Dashboard extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        String itemName = itemNameField.getText();
+        String quantity = quantityField.getText().toString();
+        String status = statusField.getText();
+        if (itemName.equals("") || quantity.equals("") || status.equals("") || itemTypeBox.getSelectedIndex() == 0) {
+             JOptionPane.showMessageDialog(null, "Please enter the full detail of the product.");
+        } else {
         addItem();
+        }
        
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+         String itemName = itemNameField.getText();
+        String quantity = quantityField.getText().toString();
+        String status = statusField.getText();
+        if (itemName.equals("") || quantity.equals("") || status.equals("")|| itemTypeBox.getSelectedIndex() == 0) {
+             JOptionPane.showMessageDialog(null, "Please enter the full detail of the product.");
+        } else {
         deleteItem();
+        }
         
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -650,7 +664,14 @@ public class Dashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        String itemName = itemNameField.getText();
+        String quantity = quantityField.getText().toString();
+        String status = statusField.getText();
+        if (itemName.equals("") || quantity.equals("") || status.equals("")|| itemTypeBox.getSelectedIndex() == 0) {
+             JOptionPane.showMessageDialog(null, "Please enter the full detail of the product.");
+        } else {
         updateItem();
+        }
         
     }//GEN-LAST:event_updateButtonActionPerformed
 
