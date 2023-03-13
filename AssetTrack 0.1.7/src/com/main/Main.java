@@ -2,21 +2,17 @@
 package com.main;
 
 import com.panel.form.Dashboard;
-import com.panel.model.MenuSelection;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GradientPaint;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 public class Main extends javax.swing.JFrame implements Runnable {
@@ -25,6 +21,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
         initComponents();
         Thread thread = new Thread(this);
         thread.start();
+        Time1.setFont(new Font("Lato", Font.PLAIN, 15));
+        Time2.setFont(new Font("Lato", Font.PLAIN, 15));
         setVisible(false);
         setBackground(new Color(0,0,0,0));
         MainHeader.setBackground(Color.decode("#2C74B3"));
@@ -80,6 +78,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jLabel2 = new javax.swing.JLabel();
         Time1 = new javax.swing.JLabel();
         Time2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 150, 1700, 1000));
@@ -99,9 +99,19 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ASSET TRAK");
 
+        Time1.setForeground(new java.awt.Color(255, 255, 255));
         Time1.setText("jLabel3");
 
+        Time2.setForeground(new java.awt.Color(255, 255, 255));
         Time2.setText("jLabel4");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Time:");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Date:");
 
         javax.swing.GroupLayout MainHeaderLayout = new javax.swing.GroupLayout(MainHeader);
         MainHeader.setLayout(MainHeaderLayout);
@@ -112,36 +122,34 @@ public class Main extends javax.swing.JFrame implements Runnable {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1090, Short.MAX_VALUE)
-                .addGroup(MainHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Time1)
-                    .addComponent(Time2))
-                .addGap(308, 308, 308))
+                .addGap(58, 58, 58)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Time2)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Time1)
+                .addContainerGap(1122, Short.MAX_VALUE))
         );
         MainHeaderLayout.setVerticalGroup(
             MainHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(MainHeaderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(MainHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MainHeaderLayout.createSequentialGroup()
-                        .addComponent(Time1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Time2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Time2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Time1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
         panelBorder1Layout.setHorizontalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(MainHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 1656, Short.MAX_VALUE)
-                    .addComponent(mainpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(mainpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(MainHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 1662, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,6 +187,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel Time2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel mainpanel;
     private com.panel.swing.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables

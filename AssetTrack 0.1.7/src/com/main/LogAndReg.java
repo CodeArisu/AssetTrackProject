@@ -102,11 +102,23 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         cb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginButtonActionPerformed();
+                //loginButtonActionPerformed();
+                inRun();
             }
-            
         });
         Login.add(cb, "w 30%, h 50");
+    }
+    
+     //Splash Screen
+    private void inRun() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+        @Override
+        public void run() {
+                    new com.main.LoadingScreen(null, true).setVisible(true);
+                    new Admin().dispose();
+                    new Main().setVisible(true);
+                }
+       });
     }
     
     public void showRegister(boolean show) {
@@ -159,7 +171,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
     }// </editor-fold>//GEN-END:initComponents
     
     // Login button real function
-    private void loginButtonActionPerformed() {                                            
+    /*private void loginButtonActionPerformed() {                                            
         String getUsername = usertext.getText();
         String getPassword = passtext.getText();
         
@@ -172,10 +184,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
                 JOptionPane.showMessageDialog(null, "Login successful!");
                 this.setVisible(false);
                 
-                admin = new Admin();
-                admin.setVisible(false);
-                main = new Main();
-                main.setVisible(true);
+                inRun();
                 
             }
             else{
@@ -185,7 +194,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         catch(SQLException sqlException){
         }
       
-    }
+    }*/
     
 
    
