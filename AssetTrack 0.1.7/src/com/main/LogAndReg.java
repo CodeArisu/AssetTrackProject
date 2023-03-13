@@ -1,4 +1,3 @@
-
 package com.main;
 
 import com.panel.swing.CustomPassField;
@@ -106,16 +105,6 @@ public class LogAndReg extends javax.swing.JLayeredPane {
                 loginButtonActionPerformed();
             }
             
-            /* commented for experimental purposes
-                if(usertext.getText().equals("Admin") && passtext.getText().equals("Admin")) {
-                    JOptionPane.showMessageDialog(null, "Log In Successfully");
-                    admin = new Admin();
-                    admin.dispose();
-                    main = new Main();
-                    main.setVisible(true);
-                } else JOptionPane.showMessageDialog(null, "Account Doesn't Existed");
-                }
-*/
         });
         Login.add(cb, "w 30%, h 50");
     }
@@ -197,47 +186,9 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         }
       
     }
-    //Register button real function 
-    private void registerButtonActionPerformed(){
-        
-        String getUsername = usertext.getText();
-        String getPassword = passtext.getText();
-        String getRetypePass = retypePass.getText();
-        
-        
-        try{
-        
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/loginpage", "root", "");
-            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) FROM `login_information` WHERE `usernameField` = ? AND `passwordField`= ?");
-            ps.setString(1, getUsername);
-            ps.setString(2, getPassword);
-            ResultSet rs = ps.executeQuery();
-            
-            if (rs.next() && rs.getInt(1) == 0){
-                PreparedStatement insertData  = connection.prepareStatement("INSERT INTO `login_information`(`usernameField`, `passwordField`) VALUES (?, ?);");
-                insertData.setString(1, getUsername);
-                insertData.setString(2, getPassword);
-                
-                insertData.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Successfully registered!");
-            }
-            
-            else if (getPassword != getRetypePass){
-                JOptionPane.showMessageDialog(null, "Passwords do not match!");
-            }
-            
-            else{
-                JOptionPane.showMessageDialog(null, "User already exists!");
-            }
-        }
-        
-        catch(SQLException sqlException){
-            
-        }
-        
-    }
-
     
+
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Login;
     private javax.swing.JPanel Register;

@@ -23,7 +23,9 @@ public class CButton extends JButton {
     private Color lineoriginal;
     private Color lineover;
     private int strokeWidth;
-     
+    
+    
+    // CButton Properties
     public CButton(){
         
         setVerticalAlignment(JButton.CENTER);

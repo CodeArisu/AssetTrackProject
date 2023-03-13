@@ -254,6 +254,7 @@ public class Dashboard extends javax.swing.JPanel {
         clearButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
         itemTypeBox = new javax.swing.JComboBox<>();
+        addButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablepanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -336,6 +337,17 @@ public class Dashboard extends javax.swing.JPanel {
             }
         });
 
+        addButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        addButton1.setForeground(new java.awt.Color(0, 153, 0));
+        addButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icon/logout_icon-removebg-preview.png"))); // NOI18N
+        addButton1.setText("LOGOUT");
+        addButton1.setBorder(null);
+        addButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -367,16 +379,18 @@ public class Dashboard extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(updateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(678, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(mlabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(itemNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mlabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(itemNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mlabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statusField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -397,7 +411,7 @@ public class Dashboard extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(deleteButton)
                             .addComponent(clearButton))))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
@@ -580,7 +594,7 @@ public class Dashboard extends javax.swing.JPanel {
             .addGroup(tablepanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tablepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
                     .addGroup(tablepanelLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
@@ -604,7 +618,7 @@ public class Dashboard extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tablepanelLayout.createSequentialGroup()
-                        .addGap(0, 27, Short.MAX_VALUE)
+                        .addGap(0, 37, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -618,7 +632,7 @@ public class Dashboard extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -696,6 +710,10 @@ public class Dashboard extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_itemTypeBoxActionPerformed
 
+    private void addButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addButton1ActionPerformed
+
     public void getCurrentUserLogin(String getUsername, String getPassword) {
        try { Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_database", "root", "");
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `user_info` WHERE `username`= '" + getUsername + "' AND `password` = '" + getPassword + "'");
@@ -717,6 +735,7 @@ public class Dashboard extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable a;
     private javax.swing.JButton addButton;
+    private javax.swing.JButton addButton1;
     private javax.swing.JButton clearButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JTextField itemNameField;
