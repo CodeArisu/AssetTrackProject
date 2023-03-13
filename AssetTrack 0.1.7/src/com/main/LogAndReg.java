@@ -86,7 +86,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         fb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "That Sucks, Contact the Administrators Instead");
+                JOptionPane.showMessageDialog(null, "Please contact the administrators!");
             }
         });
         fb.setForeground(new Color(100,100,100));

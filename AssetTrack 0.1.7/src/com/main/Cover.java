@@ -49,7 +49,7 @@ public class Cover extends javax.swing.JPanel {
         logo.setIcon(icon);
         add(logo);
         discription = new JLabel();
-        discription.setText("Welcome! To AssetTrack");
+        discription.setText("Welcome! To AssetTrak");
         discription.setFont(new Font("Lato", Font.BOLD, 18));
         discription.setForeground(new Color(245,245,245));
         add(discription);
@@ -137,11 +137,11 @@ public class Cover extends javax.swing.JPanel {
     private void login(boolean login) {
         if(this.isLogin != login) {
             if(login) {
-                discription.setText("Hello And Welcome Back!");
-                sign.setText("No Existing Account? Sign Up Now!");
+                discription.setText("Welcome back!");
+                sign.setText("No existing account? Sign up now!");
             } else {
-                discription.setText("Welcome! To AssetTrack");
-                sign.setText("Already Have An Account? Sign In!");
+                discription.setText("Welcome to AssetTrak!");
+                sign.setText("Already have an account? Sign in!");
             }
             this.isLogin = login;
         }
