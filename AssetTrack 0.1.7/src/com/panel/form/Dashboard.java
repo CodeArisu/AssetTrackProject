@@ -1,5 +1,7 @@
 package com.panel.form;
 
+
+import com.main.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -254,7 +256,7 @@ public class Dashboard extends javax.swing.JPanel {
         clearButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
         itemTypeBox = new javax.swing.JComboBox<>();
-        addButton1 = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablepanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -337,14 +339,14 @@ public class Dashboard extends javax.swing.JPanel {
             }
         });
 
-        addButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        addButton1.setForeground(new java.awt.Color(0, 153, 0));
-        addButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icon/logout_icon-removebg-preview.png"))); // NOI18N
-        addButton1.setText("LOGOUT");
-        addButton1.setBorder(null);
-        addButton1.addActionListener(new java.awt.event.ActionListener() {
+        logoutButton.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(0, 153, 0));
+        logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/icon/logout_icon-removebg-preview.png"))); // NOI18N
+        logoutButton.setText("LOGOUT");
+        logoutButton.setBorder(null);
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButton1ActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -380,7 +382,7 @@ public class Dashboard extends javax.swing.JPanel {
                             .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(updateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -388,7 +390,7 @@ public class Dashboard extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(mlabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                     .addComponent(itemNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mlabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -710,9 +712,18 @@ public class Dashboard extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_itemTypeBoxActionPerformed
 
-    private void addButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addButton1ActionPerformed
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        int confirmed = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?");
+        if (confirmed == JOptionPane.YES_OPTION){
+            this.setVisible(false);
+
+            Admin admin = new Admin();
+            admin.setVisible(true);
+        }
+        else{
+
+        }
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     public void getCurrentUserLogin(String getUsername, String getPassword) {
        try { Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_database", "root", "");
@@ -735,7 +746,6 @@ public class Dashboard extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable a;
     private javax.swing.JButton addButton;
-    private javax.swing.JButton addButton1;
     private javax.swing.JButton clearButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JTextField itemNameField;
@@ -745,6 +755,7 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JLabel mlabel3;
     private javax.swing.JLabel mlabel4;
     private javax.swing.JLabel mlabel6;
