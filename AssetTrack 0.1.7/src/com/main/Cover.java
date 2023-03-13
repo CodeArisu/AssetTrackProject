@@ -137,7 +137,7 @@ public class Cover extends javax.swing.JPanel {
     private void login(boolean login) {
         if(this.isLogin != login) {
             if(login) {
-                discription.setText("Welcome back!");
+                discription.setText("Welcome Back!");
                 sign.setText("No existing account? Sign up now!");
             } else {
                 discription.setText("Welcome to AssetTrak!");
