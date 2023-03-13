@@ -102,8 +102,8 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         cb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //loginButtonActionPerformed();
-                inRun();
+                loginButtonActionPerformed();
+                //inRun();
             }
         });
         Login.add(cb, "w 30%, h 50");
@@ -171,7 +171,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
     }// </editor-fold>//GEN-END:initComponents
     
     // Login button real function
-    /*private void loginButtonActionPerformed() {                                            
+    private void loginButtonActionPerformed() {                                            
         String getUsername = usertext.getText();
         String getPassword = passtext.getText();
         
@@ -194,7 +194,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         catch(SQLException sqlException){
         }
       
-    }*/
+    }
     
 
    
