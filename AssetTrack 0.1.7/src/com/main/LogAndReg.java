@@ -63,10 +63,7 @@ public class LogAndReg extends javax.swing.JLayeredPane {
         cb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                registerButtonActionPerformed();
-                // JOptionPane.showMessageDialog(null, "Not Applicable Yet");
-                
+                JOptionPane.showMessageDialog(null, "Credentials are being processed. Please use the default credentials.");
                 }
         });
         Register.add(cb, "w 30%, h 50");
