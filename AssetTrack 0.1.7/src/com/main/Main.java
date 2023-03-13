@@ -13,13 +13,18 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-public class Main extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame implements Runnable {
     
     public Main() {
         initComponents();
+        Thread thread = new Thread(this);
+        thread.start();
         setVisible(false);
         setBackground(new Color(0,0,0,0));
         MainHeader.setBackground(Color.decode("#2C74B3"));
@@ -28,6 +33,25 @@ public class Main extends javax.swing.JFrame {
     }
     private int x;
     private int y;
+    
+     public void run() {
+        while (true) {
+            
+            Calendar calendar = Calendar.getInstance();
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            int minute = calendar.get(Calendar.MINUTE);
+            int second = calendar.get(Calendar.SECOND);
+            Date date = calendar.getTime();
+
+            SimpleDateFormat TF_1 = new SimpleDateFormat("EEE, MMM d, ''yy");
+            String time1 = TF_1.format(date);
+            Time1.setText(time1);
+
+            SimpleDateFormat TF_2 = new SimpleDateFormat("h:mm ss a");
+            String time2 = TF_2.format(date);
+            Time2.setText(time2);
+        }
+    }
 
     public void initDrag(JFrame fram) {
         MainHeader.addMouseListener(new MouseAdapter() {
@@ -54,6 +78,8 @@ public class Main extends javax.swing.JFrame {
         MainHeader = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        Time1 = new javax.swing.JLabel();
+        Time2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 150, 1700, 1000));
@@ -73,6 +99,10 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ASSET TRAK");
 
+        Time1.setText("jLabel3");
+
+        Time2.setText("jLabel4");
+
         javax.swing.GroupLayout MainHeaderLayout = new javax.swing.GroupLayout(MainHeader);
         MainHeader.setLayout(MainHeaderLayout);
         MainHeaderLayout.setHorizontalGroup(
@@ -82,14 +112,24 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1435, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1090, Short.MAX_VALUE)
+                .addGroup(MainHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Time1)
+                    .addComponent(Time2))
+                .addGap(308, 308, 308))
         );
         MainHeaderLayout.setVerticalGroup(
             MainHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(MainHeaderLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addGroup(MainHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MainHeaderLayout.createSequentialGroup()
+                        .addComponent(Time1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Time2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -135,6 +175,8 @@ public class Main extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainHeader;
+    private javax.swing.JLabel Time1;
+    private javax.swing.JLabel Time2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel mainpanel;
